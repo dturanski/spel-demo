@@ -26,7 +26,8 @@ public class SpelDemoApplicationTests {
 	public void contextLoads() {
 		Message message = MessageBuilder.withPayload("hello").setHeader("bar","somevalue").build();
 		output.subscribe(message1 -> {
-			assertThat(message1.getHeaders().get("foo").equals("SOMEVALUE"));
+
+			assertThat(message1.getHeaders().get("foo")).isEqualTo("SOMEVALUE");
 		});
 		input.send(message);
 	}
